@@ -27,8 +27,8 @@ const Header = ({
       if (saved && saved !== 'null' && saved !== 'undefined') {
         const parsed = JSON.parse(saved);
         if (parsed && typeof parsed === 'object' && parsed.address) {
-          return parsed.address.length > 25 
-            ? parsed.address.split(',')[0].trim() + '...' 
+          return parsed.address.length > 25
+            ? parsed.address.split(',')[0].trim() + '...'
             : parsed.address;
         }
       }
@@ -54,7 +54,7 @@ const Header = ({
         simplifiedLocation = location.substring(0, 22) + '...';
       }
     }
-    
+
     setUserLocation(simplifiedLocation);
     try {
       localStorage.setItem('esygrab_user_location', JSON.stringify({ address: location }));
@@ -65,11 +65,10 @@ const Header = ({
   };
 
   const MobileNavButton = ({ to, icon: Icon, label, isActive }: { to: string; icon: any; label: string; isActive: boolean }) => (
-    <Link 
-      to={to} 
-      className={`flex flex-col items-center space-y-1 px-3 py-2 rounded-lg transition-colors ${
-        isActive ? 'text-green-600 bg-green-50' : 'text-gray-600 hover:text-green-600'
-      }`}
+    <Link
+      to={to}
+      className={`flex flex-col items-center space-y-1 px-3 py-2 rounded-lg transition-colors ${isActive ? 'text-green-600 bg-green-50' : 'text-gray-600 hover:text-green-600'
+        }`}
     >
       <Icon className="h-5 w-5" />
       <span className="text-xs font-medium">{label}</span>
@@ -115,7 +114,7 @@ const Header = ({
                 <Clock className="h-4 w-4" />
                 <span className="font-medium">10 mins</span>
               </div>
-              
+
               {user ? (
                 <>
                   <Button variant="outline" className="hover:bg-green-50 border-green-200" onClick={signOut}>
@@ -166,12 +165,12 @@ const Header = ({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
             <div className="relative">
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-              <Input 
-                type="text" 
-                placeholder="Search for groceries, fruits, vegetables..." 
-                value={searchQuery} 
-                onChange={e => onSearchChange(e.target.value)} 
-                className="pl-12 w-full h-12 text-base rounded-full border-gray-200 bg-gray-50 focus:bg-white focus:border-green-500 transition-all duration-200" 
+              <Input
+                type="text"
+                placeholder="Search for groceries, fruits, vegetables..."
+                value={searchQuery}
+                onChange={e => onSearchChange(e.target.value)}
+                className="pl-12 w-full h-12 text-base rounded-full border-gray-200 bg-gray-50 focus:bg-white focus:border-green-500 transition-all duration-200"
               />
             </div>
           </div>
@@ -188,24 +187,24 @@ const Header = ({
       {/* Mobile Bottom Navigation - Always visible on mobile */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t shadow-lg">
         <div className="flex justify-around items-center py-2 px-4">
-          <MobileNavButton 
-            to="/" 
-            icon={Home} 
-            label="Home" 
-            isActive={location.pathname === '/'} 
+          <MobileNavButton
+            to="/"
+            icon={Home}
+            label="Home"
+            isActive={location.pathname === '/'}
           />
-          <MobileNavButton 
-            to="/categories" 
-            icon={Grid3X3} 
-            label="Categories" 
-            isActive={location.pathname === '/categories'} 
+          <MobileNavButton
+            to="/categories"
+            icon={Grid3X3}
+            label="Categories"
+            isActive={location.pathname === '/categories'}
           />
           <Link to="/cart" className="relative">
-            <MobileNavButton 
-              to="/cart" 
-              icon={ShoppingCart} 
-              label="Cart" 
-              isActive={location.pathname === '/cart'} 
+            <MobileNavButton
+              to="/cart"
+              icon={ShoppingCart}
+              label="Cart"
+              isActive={location.pathname === '/cart'}
             />
             {cartItems > 0 && (
               <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
@@ -213,11 +212,11 @@ const Header = ({
               </span>
             )}
           </Link>
-          <MobileNavButton 
-            to="/profile" 
-            icon={User} 
-            label="Account" 
-            isActive={location.pathname === '/profile'} 
+          <MobileNavButton
+            to="/profile"
+            icon={User}
+            label="Account"
+            isActive={location.pathname === '/profile'}
           />
         </div>
       </div>
