@@ -294,4 +294,4 @@ export const useProductsByCategory = (categoryId: number) => {
       }
     },
   });
-};
+}; 
